@@ -1,0 +1,22 @@
+
+input{
+  width: 100%;
+  color: rgb(83, 63, 63);
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.items-container{
+  text-align: left;
+  color: rgb(102, 99, 99);
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.todo-row{
+  margin: 20px;
+}
+
+.todo-button{
+  min-width: 85px;
+}

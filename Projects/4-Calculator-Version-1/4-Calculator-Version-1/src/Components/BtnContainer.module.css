@@ -1,0 +1,15 @@
+.buttonsContainer{
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.btns{
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  text-align: center;
+  font-style: oblique;
+  border-radius: 2px;
+  border: 2px solid rgb(105, 92, 92);
+}

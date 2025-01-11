@@ -1,0 +1,8 @@
+.Container{
+  border-radius: 5px;
+  border: 4px solid rgb(141, 54, 54);
+  padding: 6px;
+  margin: 20px;
+  width: 50%;
+  min-width: 400px;
+}

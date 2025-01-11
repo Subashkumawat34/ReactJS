@@ -1,5 +1,12 @@
 .item-btn{
   color: crimson;
-  margin: 5px 10px;
+  margin: 5px 5px;
   background-color: rgb(218, 218, 199);
+  border: 1px solid black;
+}
+
+.button{
+  width: 80px;
+  background-color: rgb(56, 136, 56);
+  float: right;
 }

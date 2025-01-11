@@ -1,0 +1,10 @@
+.headingStyle{
+  font-weight: 700;
+  margin: 15px;
+  margin-bottom: 20px;
+  font-size: 40px;
+  background-color: rgb(173, 169, 164);
+  padding: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(44, 48, 38);
+}
