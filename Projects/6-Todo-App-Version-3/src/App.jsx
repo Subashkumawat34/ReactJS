@@ -10,11 +10,13 @@ function App() {
   const [todoListItems, setTodoItems] = useState([]);
 
   const handleNewItem = (itemName, itemDate) => {
-    const newTodoItems = [
-      ...todoListItems,
-      { ListName: itemName, ListDate: itemDate },
-    ];
-    setTodoItems(newTodoItems);
+    setTodoItems((currentValue) => {
+      const newTodoItems = [
+        ...currentValue,
+        { ListName: itemName, ListDate: itemDate },
+      ];
+      return newTodoItems;
+    });
     //console.log(`new item added: ${itemName} ${itemDate}`);
   };
 
