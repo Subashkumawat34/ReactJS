@@ -5,6 +5,7 @@ import "./App.css";
 import { useState } from "react";
 import WelcomeMsg from "./Componants/WelcomeMsg";
 import Container from "./Componants/Container";
+import { TodoItemsContext } from "./assets/Store/Todo-items-store";
 
 function App() {
   const [todoListItems, setTodoItems] = useState([]);
@@ -12,12 +13,12 @@ function App() {
   const handleNewItem = (itemName, itemDate) => {
     setTodoItems((currentValue) => {
       const newTodoItems = [
-        ...currentValue,
         { ListName: itemName, ListDate: itemDate },
+        ...currentValue,
       ];
       return newTodoItems;
     });
-    //console.log(`new item added: ${itemName} ${itemDate}`);
+    //console.log(new item added: ${itemName} ${itemDate});
   };
 
   const handleDeleteItem = (DellitemName) => {
@@ -25,21 +26,20 @@ function App() {
       return item.ListName !== DellitemName;
     });
     setTodoItems(newTodoItems);
-    //console.log(`button is: ${DellitemName}`);
+    //console.log(button is: ${DellitemName});
   };
 
   return (
-    <Container>
-      <div className="todo-container" style={{ textAlign: "center" }}>
-        <AppName />
-        <AddTodo onNewItem={handleNewItem} />
-        {todoListItems.length === 0 && <WelcomeMsg></WelcomeMsg>}
-        <TodoItemList
-          allItems={todoListItems}
-          OnDeleteClick={handleDeleteItem}
-        />
-      </div>
-    </Container>
+    <TodoItemsContext.Provider value={todoListItems}>
+      <Container>
+        <div className="todo-container" style={{ textAlign: "center" }}>
+          <AppName />
+          <AddTodo onNewItem={handleNewItem} />
+          <WelcomeMsg></WelcomeMsg>
+          <TodoItemList OnDeleteClick={handleDeleteItem} />
+        </div>
+      </Container>
+    </TodoItemsContext.Provider>
   );
 }
 
