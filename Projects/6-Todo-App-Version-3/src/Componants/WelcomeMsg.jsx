@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import styles from "./WelcomeMsg.module.css";
+
 import { TodoItemsContext } from "../assets/Store/Todo-items-store";
-const WelcomeMsg = () => {
-  const todoListItems = useContext(TodoItemsContext);
+const WelcomeMessage = () => {
+  const { todoItems } = useContext(TodoItemsContext);
   return (
-    todoListItems.length === 0 && (
-      <p className={styles.welcomeMsg}>Task's list is Empty!! Enjoy...</p>
-    )
+    todoItems.length === 0 && <p className={styles.welcome}>Enjoy Your Day</p>
   );
 };
 
-export default WelcomeMsg;
+export default WelcomeMessage;

@@ -1,65 +1,50 @@
-import { MdOutlinePlaylistAdd } from "react-icons/md";
-import { useRef } from "react";
+import { useContext } from "react";
+import { useState } from "react";
+import { TodoItemsContext } from "../assets/Store/Todo-items-store";
 
-function AddTodo({ onNewItem }) {
-  const todoNameElement = useRef("");
-  const todoDateElement = useRef("");
-  // const [todoName, setTodoName] = useState("");
-  // const [todoDate, setTodoDate] = useState("");
+function AddTodo() {
+  const { addNewItem } = useContext(TodoItemsContext);
+  const [todoName, setTodoName] = useState("");
+  const [dueDate, setDueDate] = useState("");
 
-  // const handleNameOnChg = (event) => {
-  //   setTodoName(event.target.value);
+  const handleNameChange = (event) => {
+    setTodoName(event.target.value);
+  };
 
-  // };
+  const handleDateChange = (event) => {
+    setDueDate(event.target.value);
+  };
 
-  // const handleDateOnChg = (event) => {
-  //   setTodoDate(event.target.value);
-  // };
-
-  const handleAddBtnClicked = (event) => {
-    event.preventDefault();
-    if (todoNameElement.current.value && todoDateElement.current.value !== "") {
-      const todoName = todoNameElement.current.value;
-      const todoDate = todoDateElement.current.value;
-      todoNameElement.current.value = "";
-      todoDateElement.current.value = "";
-      onNewItem(todoName, todoDate);
-      // setTodoDate("");
-      // setTodoName("");
-    } else {
-      alert("Both Fields are Required");
-      return;
-    }
+  const handleAddButtonClicked = () => {
+    addNewItem(todoName, dueDate);
+    setDueDate("");
+    setTodoName("");
   };
 
   return (
     <div className="container text-center">
-      <form onSubmit={handleAddBtnClicked}>
-        <div className="row todo-row">
-          <div className="col-6 input">
-            <input
-              type="text"
-              placeholder="Enter to do Here"
-              ref={todoNameElement}
-              //onChange={handleNameOnChg}
-              // value={todoName}
-            ></input>
-          </div>
-          <div className="col-4">
-            <input
-              type="date"
-              ref={todoDateElement}
-              //onChange={handleDateOnChg}
-              //value={todoDate}
-            ></input>
-          </div>
-          <div className="col-2">
-            <button type="submit" className="todo-button btn btn-success">
-              <MdOutlinePlaylistAdd />
-            </button>
-          </div>
+      <div className="row kg-row">
+        <div className="col-6">
+          <input
+            type="text"
+            placeholder="Enter Todo Here"
+            value={todoName}
+            onChange={handleNameChange}
+          />
         </div>
-      </form>
+        <div className="col-4">
+          <input type="date" value={dueDate} onChange={handleDateChange} />
+        </div>
+        <div className="col-2">
+          <button
+            type="button"
+            className="btn btn-success kg-button"
+            onClick={handleAddButtonClicked}
+          >
+            Add
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

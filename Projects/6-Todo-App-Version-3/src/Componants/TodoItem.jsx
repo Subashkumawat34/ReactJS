@@ -1,17 +1,20 @@
-import { MdOutlineDeleteSweep } from "react-icons/md";
-function TodoItem({ name, date, OnDeleteClick }) {
+import { useContext } from "react";
+import { TodoItemsContext } from "../assets/Store/Todo-items-store";
+function TodoItem({ todoName, todoDate }) {
+  const { deleteItem } = useContext(TodoItemsContext);
+
   return (
     <div className="container">
-      <div className="row todo-row">
-        <div className="col-6">{name}</div>
-        <div className="col-4">{date}</div>
+      <div className="row kg-row">
+        <div className="col-6">{todoName}</div>
+        <div className="col-4">{todoDate}</div>
         <div className="col-2">
           <button
             type="button"
-            className="btn btn-danger todo-button"
-            onClick={() => OnDeleteClick(name)}
+            className="btn btn-danger kg-button"
+            onClick={() => deleteItem(todoName)}
           >
-            <MdOutlineDeleteSweep />
+            Delete
           </button>
         </div>
       </div>
